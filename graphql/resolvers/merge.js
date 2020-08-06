@@ -1,12 +1,13 @@
 const DataLoader = require('dataloader')
 
-const userLoader = new DataLoader(eventIds => {
-    return User.find({_id: {$in: eventIds} })
+const userLoader = new DataLoader((eventIds) => {
+	return User.find({ _id: { $in: eventIds } })
 })
 
-const transformUser = user => {
-    return {
-        ...user._doc,
-        password: null
-    }
+const transformUser = (user) => {
+	return {
+		...user._doc,
+		password : null
+	}
 }
+exports.transformUser = transformUser

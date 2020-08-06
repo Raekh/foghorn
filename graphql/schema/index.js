@@ -3,10 +3,10 @@ const { buildSchema } = require('graphql')
 module.exports = buildSchema(`
     type User {
         _id: ID!
-        nick: String!
+        nick: String
         email: String!
-        avatar: Image!
-        password: String!
+        avatar: Image
+        password: String
     }
 
     type Game {
@@ -39,14 +39,14 @@ module.exports = buildSchema(`
         password: String!
     }
 
+    input GameInput {
+        name: String!
+    }
+
     input PartyInput {
         name: String!
         creator: String!
         game: GameInput!
-    }
-
-    input GameInput {
-        name: String!
     }
 
     type RootQuery {

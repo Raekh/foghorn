@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken')
 const User = require('../../models/user')
 
 const { transformUser } = require('./merge')
-const user = require('../../models/user')
 
 module.exports = {
 	users      : async () => {
@@ -20,7 +19,7 @@ module.exports = {
 	createUser : async (args) => {
 		let { email, password } = args.userInput
 		try {
-			const existingUser = await user.findOne({ email: email })
+			const existingUser = await User.findOne({ email: email })
 			if (existingUser) {
 				throw new Error('User already exists')
 			}
