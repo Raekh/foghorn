@@ -1,31 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:frontend_flutter/screens/dashboard/components/dashboard_body.dart';
+import 'package:frontend_flutter/constants.dart';
 
-class DashboardScreen extends StatelessWidget {
+import 'home_body.dart';
+
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kBackgroundColor,
       appBar: buildAppBar(),
-      body: DashboardBody(),
+      body: HomeBody(),
     );
   }
 
   AppBar buildAppBar() {
     return AppBar(
-      toolbarHeight: 60,
-      backgroundColor: Colors.white,
+      title: Text('FogHorn', style: kLightTitleStyle),
+      backgroundColor: kBackgroundColor,
       elevation: 0,
       leading: IconButton(
+        splashRadius: 20,
         icon: Icon(
           Icons.menu,
-          color: Colors.black,
+          color: kLightBackgroundColor,
         ),
         onPressed: () {
           print('menu');
         },
       ),
-      // backgroundColor: LinearGradient(),
     );
   }
 }
