@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend_flutter/constants.dart';
+import 'package:frontend_flutter/screens/game/game_screen.dart';
+
+import 'components/game_card.dart';
 
 class HomeBody extends StatelessWidget {
   @override
@@ -13,76 +16,18 @@ class HomeBody extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 20, left: 20),
-                      child: Text(
-                        'Games',
-                        style: kLightTitleStyle.copyWith(fontSize: 20),
-                      ),
-                    ),
+                    StandardTitle(title: "Games"),
                     SizedBox(height: 20),
                     Container(
                       height: 150,
                       width: MediaQuery.of(context).size.width,
                       child: ListView.builder(
+                        // physics: RangeMaintainingScrollPhysics(),
                         scrollDirection: Axis.horizontal,
-                        itemCount: 5,
+                        itemCount: 1,
                         itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey[700],
-                                borderRadius: BorderRadius.circular(60),
-                              ),
-                              width: 110,
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: Draggable(
-                                      feedback: SizedBox(
-                                        width: 100,
-                                        child: ClipRRect(
-                                          clipBehavior: Clip.antiAlias,
-                                          borderRadius:
-                                              BorderRadius.circular(60),
-                                          child: Image(
-                                            image: AssetImage(
-                                                "assets/images/valorant.png"),
-                                            fit: BoxFit.fill,
-                                          ),
-                                        ),
-                                      ),
-                                      axis: Axis.vertical,
-                                      dragAnchor: DragAnchor.child,
-                                      maxSimultaneousDrags: 1,
-                                      feedbackOffset: Offset(0, 10),
-                                      childWhenDragging: Container(
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: kBackgroundColor,
-                                        ),
-                                        child: Icon(
-                                          Icons.add,
-                                          size: 30,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      child: ClipRRect(
-                                        clipBehavior: Clip.antiAlias,
-                                        borderRadius: BorderRadius.circular(60),
-                                        child: Image(
-                                          image: AssetImage(
-                                              "assets/images/valorant.png"),
-                                          fit: BoxFit.fill,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                          return GameCard(
+                            name: "Valorant",
                           );
                         },
                       ),
@@ -93,6 +38,25 @@ class HomeBody extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class StandardTitle extends StatelessWidget {
+  const StandardTitle({
+    Key key,
+    this.title,
+  }) : super(key: key);
+
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: 20, left: 20),
+      child: Text(
+        title,
+        style: kLightTitleStyle.copyWith(fontSize: 20),
       ),
     );
   }
