@@ -8,7 +8,7 @@ class GameBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int maxPlayers = 5;
-    int currentPlayers = 0;
+    int currentPlayers = 3;
     double percentage = currentPlayers / maxPlayers;
     return Container(
       child: Column(
@@ -37,9 +37,17 @@ class GameBody extends StatelessWidget {
                           height: 100,
                           width: 300,
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                colors: [kLightGrey, kLightGrey, kGrey, kGrey],
-                                stops: [0, percentage, percentage, 1]),
+                            gradient: LinearGradient(colors: [
+                              kGrey,
+                              kGrey,
+                              kLightGrey,
+                              kLightGrey,
+                            ], stops: [
+                              0,
+                              percentage,
+                              percentage,
+                              1
+                            ]),
                             borderRadius: BorderRadius.circular(50),
                           ),
                         ),
